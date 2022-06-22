@@ -33,15 +33,15 @@ volatile int counter = 0;
 void setup()
 {
   //Serial Initialization
-  Serial.begin(9600); 
+  Serial.begin(9600);
 
   // DH11 initialization
   dht.begin();
 
-  
+
   /*
    * Pluviometer initialization
-   * Because we just want to count the number of auger tilts 
+   * Because we just want to count the number of auger tilts
    * we place the attachinterrupt un the setup
    */
   pinMode(pluvio, INPUT_PULLUP);
@@ -53,7 +53,7 @@ void setup()
 
   /*
    * RTC initialization
-   * DO NOT synchronize here 
+   * DO NOT synchronize here
    * because If the arduino restarts it will also reinitialize the clock...
    * Thanks Olivier !
    */
@@ -91,7 +91,7 @@ void loop()
   Wire.beginTransmission(ADRESSE_I2C_RTC);
   DateTime now = rtc.now();
   Wire.endTransmission();
-  
+
   float t = dht.readTemperature();
   float h = dht.readHumidity();
 
@@ -102,7 +102,7 @@ void loop()
   sprintf(sdate,"%04d:%02d:%02d",now.year(),now.month(),now.day());
   char stime[10];
   sprintf(stime,"%02d:%02d:%02d",now.hour(),now.minute(),now.second());
-  
+
   String dataString =  "w,";
   dataString +=  String(sdate) + "," + String(stime) + "," + String(t) + "," + String(h) + "," + String(counter*0.25) + "\n";
   Serial.print(dataString);
@@ -114,12 +114,12 @@ void loop()
   counter = 0;
 
  /*
-  * Go to sleep fro one minute
+  * Go to sleep for one minute
   */
  for (int i=1;i<=7;i++){ // change to 1 for 12s
-    LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);  
+    LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
   }
- LowPower.powerDown(SLEEP_4S, ADC_OFF, BOD_OFF); 
+ LowPower.powerDown(SLEEP_4S, ADC_OFF, BOD_OFF);
 }
 
 
@@ -129,9 +129,9 @@ void loop()
 void writeData(String dataString)
 {
   if (SD.begin(chipSelect)){
-  
+
      File dataFile = SD.open("METEOLOG.TXT", FILE_WRITE);
-  
+
      // if the file is available, write to it:
      if (dataFile) {
       dataFile.print(dataString);
@@ -155,5 +155,5 @@ void pCount()
 {
 
   counter += 1;
-  
+
 }
