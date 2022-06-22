@@ -1,2 +1,2 @@
-root
-iznogod01
+your-login
+your-password
