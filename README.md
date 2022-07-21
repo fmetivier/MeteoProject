@@ -45,6 +45,11 @@ You can get the equivalent without the logger for ~ 100€ (sic, look at Rainwis
 * SDcard module to store the data
 * Solar charger connected to LiPo battery and to the Nano.
 
+![](./sketch/MeteoLog_bb.jpg)
+Note that the breadboard view  does not include USB connection to the sunflower solar module.
+
+
+
 ## Arduino scripts
 
 ### NanoWeatherLoggerSleepOne
