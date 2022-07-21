@@ -54,7 +54,7 @@ Note that the breadboard view  does not include USB connection to the sunflower 
 
 ### NanoWeatherLoggerSleepOne
 
-This scripts puts the arduino in deepsleep for a minute. During the sleep period if the auger tilts an interrupt is launched and a rainfall counter increments. At the end of th period the DHT11 measures temperature and humidity and the Arduino stores Temperature, humidity and amount of rain fallen during the last minute.
+This scripts puts the arduino in deepsleep for one minute (you can change it easily to any value by changing the length of the sleep loop). During the sleep period if the auger tilts an interrupt is launched and a rainfall counter increments. At the end of th period the DHT11 measures temperature and humidity and the Arduino stores Temperature, humidity and amount of rain fallen during the last minute.
 
 A sample of a METEOLOG.TXT data file stored on the SD card is given in data.
 
